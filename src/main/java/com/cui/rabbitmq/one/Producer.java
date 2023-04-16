@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * 生产者
+ * 生产者-Hello Word
  */
 
 public class Producer {

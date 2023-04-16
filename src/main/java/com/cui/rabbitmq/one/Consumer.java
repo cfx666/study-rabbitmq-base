@@ -3,7 +3,7 @@ package com.cui.rabbitmq.one;
 import com.rabbitmq.client.*;
 
 /**
- * 消费者
+ * 消费者-Hello Word
  */
 public class Consumer {
 
