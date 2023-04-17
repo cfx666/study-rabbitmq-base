@@ -6,6 +6,7 @@
 
     <groupId>com.cui.rabbitmq</groupId>
     <artifactId>rabbitmq-hello</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <!--指定 jdk 编译版本-->
@@ -21,6 +22,9 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>springboot_rabbitmq</module>
+    </modules>
 
     <dependencies>
         <!--rabbitmq依赖客户端-->

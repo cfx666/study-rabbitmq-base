@@ -40,6 +40,8 @@ public class Consumer01 {
         arguments.put("x-dead-letter-exchange", DEAL_EXCHANGE);
         //正常队列设置死信routing-key参数key是固定值
         arguments.put("x-dead-letter-routing-key", "lisi");
+        //正常队列设置长度
+        arguments.put("x-max-length", 6);
         channel.queueDeclare(NORMAL_QUEUE,false,false,false,arguments);
 
         //声明死信队列
@@ -54,9 +56,17 @@ public class Consumer01 {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println("consumer01接收到的消息是：" + message);
-        };
+            if (message.equalsIgnoreCase("info5")){
+                System.out.println("consumer01接收到的消息是：" + message + "此消息被C1拒收");
+                channel.basicReject(delivery.getEnvelope().getDeliveryTag(),false);
+            }else {
+                System.out.println("consumer01接收到的消息是：" + message);
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(),false);
+            }
 
-        channel.basicConsume(NORMAL_QUEUE, true, deliverCallback, consumerTag -> { });
+        };
+        //开启手动应答
+        boolean isautoAck = false;
+        channel.basicConsume(NORMAL_QUEUE, isautoAck, deliverCallback, consumerTag -> { });
     }
 }
