@@ -35,7 +35,7 @@ public class Consumer01 {
         //正常队列绑定死信队列信息
         Map<String, Object> arguments = new HashMap<>();
         //过期时间10s
-        //arguments.put("x-message-ttl", 100000);
+        //arguments.put("x-message-ttl", 10000);
         //正常队列设置死信交换机参数key是固定值
         arguments.put("x-dead-letter-exchange", DEAL_EXCHANGE);
         //正常队列设置死信routing-key参数key是固定值
