@@ -118,7 +118,6 @@ public class ConfirmMessage {
          */
         ConcurrentSkipListMap<Long,String> concurrentSkipListMap = new ConcurrentSkipListMap<>();
 
-
         //消息确认成功 回调函数
         ConfirmCallback ackCallback = (deliveryTag,multiple) -> {
             //@2删除已经确认的消息 剩下的就是未确认的消息
